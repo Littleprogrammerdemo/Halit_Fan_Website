@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Halit Özgür Sarı Fan Club ✨</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        .sparkles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .sparkle {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 20px;
+            animation: sparkle 3s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+        }
+        
+        .header {
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .header h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1rem;
+            animation: glow 2s ease-in-out infinite alternate;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #a8edea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: rainbow-text 3s ease-in-out infinite;
+        }
+        
+        @keyframes rainbow-text {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .subtitle {
+            font-size: 1.8rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+        
+        .fan-count {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-block;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .appreciation-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .appreciation-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.1);
+            transform: translateY(0);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid transparent;
+        }
+        
+        .appreciation-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, #ff9a9e, #fecfef, #a8edea, #667eea, #ff9a9e);
+            animation: rotate 6s linear infinite;
+            z-index: -1;
+        }
+        
+        .appreciation-card::after {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 27px;
+            z-index: -1;
+        }
+        
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+        
+        .appreciation-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-emoji {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .card-text {
+            font-size: 1.1rem;
+            color: #764ba2;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+        
+        .achievements-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 40px;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .achievement-badge {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            padding: 2rem 1rem;
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .achievement-badge:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .badge-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .badge-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #8b5a3c;
+            margin-bottom: 0.5rem;
+        }
+        
+        .badge-desc {
+            font-size: 0.9rem;
+            color: #8b5a3c;
+            opacity: 0.8;
+        }
+        
+        .fan-messages {
+            margin: 4rem 0;
+        }
+        
+        .messages-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .fan-message {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .fan-message:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .message-text {
+            font-size: 1.1rem;
+            color: #667eea;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        
+        .message-author {
+            font-weight: 700;
+            color: #f093fb;
+            text-align: right;
+        }
+        
+        .interactive-section {
+            text-align: center;
+            margin: 4rem 0;
+        }
+        
+        .support-button {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            border: none;
+            padding: 1.5rem 3rem;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #8b5a3c;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 40px rgba(255, 154, 158, 0.4);
+            margin: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .support-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(255, 154, 158, 0.6);
+        }
+        
+        .love-meter {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .love-bar {
+            width: 400px;
+            height: 25px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            margin: 1rem auto;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .love-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff9a9e, #fecfef, #a8edea, #667eea);
+            width: 95%;
+            border-radius: 25px;
+            transition: width 0.5s ease;
+            animation: pulse-glow 2s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 154, 158, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(255, 154, 158, 0.8); }
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+        }
+        
+        .footer-heart {
+            font-size: 2rem;
+            color: #ff9a9e;
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .appreciation-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .achievements-section {
+                padding: 2rem;
+            }
+            
+            .love-bar {
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sparkles" id="sparklesContainer"></div>
+    
+    <div class="header">
+        <h1>✨ Halit Özgür Sarı ✨</h1>
+        <div class="subtitle">Our Amazing Halito Deserves All the Love! 💕</div>
+        <div class="fan-count" id="fanCount">💖 Fan Club Members: 1,247 💖</div>
+    </div>
+    
+    <div class="container">
+        <div class="appreciation-section">
+            <div class="appreciation-card">
+                <span class="card-emoji">🌟</span>
+                <div class="card-title">Incredible Talent</div>
+                <div class="card-text">
+                    Halit brings such amazing energy to everything he does! His passion and dedication inspire everyone around him. Truly a shining star! ✨
+                </div>
+            </div>
+            
+            <div class="appreciation-card">
+                <span class="card-emoji">💝</span>
+                <div class="card-title">Wonderful Personality</div>
+                <div class="card-text">
+                    Such a kind heart and genuine spirit! Halit's warmth and positivity light up every room. He's the friend/person/man everyone wishes they had! 🥰
+                </div>
+            </div>
+            
+            <div class="appreciation-card">
+                <span class="card-emoji">🎭</span>
+                <div class="card-title">Amazing Performances</div>
+                <div class="card-text">
+                    Every role, every moment on screen is pure magic! Halit's performances touch hearts and create unforgettable memories. Absolutely brilliant! 🎬
+                </div>
+            </div>
+        </div>
+        
+        <div class="achievements-section">
+            <div class="section-title">🏆 Why We Love Halit 🏆</div>
+            <div class="achievements-grid">
+                <div class="achievement-badge" onclick="celebrateAchievement(this)">
+                    <span class="badge-emoji">🎨</span>
+                    <div class="badge-title">Creative Genius</div>
+                    <div class="badge-desc">Brings characters to life beautifully</div>
+                </div>
+                
+                <div class="achievement-badge" onclick="celebrateAchievement(this)">
+                    <span class="badge-emoji">😊</span>
+                    <div class="badge-title">Positive Vibes</div>
+                    <div class="badge-desc">Always spreads joy and happiness</div>
+                </div>
+                
+                <div class="achievement-badge" onclick="celebrateAchievement(this)">
+                    <span class="badge-emoji">🤝</span>
+                    <div class="badge-title">Team Player</div>
+                    <div class="badge-desc">Works wonderfully with everyone</div>
+                </div>
+                
+                <div class="achievement-badge" onclick="celebrateAchievement(this)">
+                    <span class="badge-emoji">💫</span>
+                    <div class="badge-title">Natural Charisma</div>
+                    <div class="badge-desc">Captivates audiences effortlessly</div>
+                </div>
+                
+                <div class="achievement-badge" onclick="celebrateAchievement(this)">
+                    <span class="badge-emoji">🔥</span>
+                    <div class="badge-title">Versatile Talent</div>
+                    <div class="badge-desc">Excels in every project</div>
+                </div>
+                
+                <div class="achievement-badge" onclick="celebrateAchievement(this)">
+                    <span class="badge-emoji">❤️</span>
+                    <div class="badge-title">Heart of Gold</div>
+                    <div class="badge-desc">Genuinely cares about others</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="fan-messages">
+            <div class="section-title">💌 Messages from Friends 💌</div>
+            <div class="messages-container">
+                <div class="fan-message">
+                    <div class="message-text">
+                        "Halit, you're such an inspiration! Your dedication and talent never cease to amaze us. Keep shining bright! ✨"
+                    </div>
+                    <div class="message-author">- Your Biggest Supporters 💕</div>
+                </div>
+                
+                <div class="fan-message">
+                    <div class="message-text">
+                        "Every project you're part of becomes something special. Your energy is contagious and your talent is undeniable! 🌟"
+                    </div>
+                    <div class="message-author">- The Fan Club Team 🎭</div>
+                </div>
+                
+                <div class="fan-message">
+                    <div class="message-text">
+                        "Thank you for being such an amazing person, Halit! Your kindness and authenticity make the world a better place! 🌈"
+                    </div>
+                    <div class="message-author">- Fans Forever 💫</div>
+                </div>
+
+                <div class="fan-message">
+                    <div class="message-text">
+                        "Mr. Halit Özgür Sari: Being one of your fans is an honor in itself for me, I am so lucky to be a fan of a humble, lovable, kind person like you, you love and appreciate your fans and this is a beautiful thing that no one can do like you or in the special way that you do, you fill the place with love, warmth and positive energy so I am always with you and I love you with all my heart and I will always remain so, you are so special to me and you will always be I wish you all the best 🥰❤️🌹. 
+Keep Smiling 😃, and shining ✨."
+                    </div>
+                    <div class="message-author">- Your fan Vivi ( VioletFlower ) 💝</div>            
+                </div>
+
+            <div class="fan-message">
+                    <div class="message-text">
+                        "Halit Özgür Sarı ...
+I just want to say how much I admire you. You are truly a talented actor, and every time I watch you on screen I’m amazed by how real and emotional your acting feels.😍
+You have a special way of making your characters come to life, and it touches the hearts of so many people, including mine. I’m really proud to be your fan 😍
+Thank you for sharing your talent with the world. I will always support you and look forward to seeing all the great things you will do in the future. You seem like a very humble and caring person that's why I truly love you and your pure soul so much 💛 "
+                    </div>
+                    <div class="message-author">- With love and respect, Meri ! 
+@editsmerih🌹</div>            
+                </div>
+
+                <div class="fan-message">
+                    <div class="message-text">
+                        "Dear Halit,
+
+You probably hear this a lot, but I just have to say it again—you have the most amazing energy. You’re always smiling, always so full of life, and it’s honestly contagious. Even through a screen, your good vibes reach people. It’s something really rare and beautiful.
+
+What I admire even more is how sweet and respectful you are with your fans. You make everyone feel seen and special, and I think that’s what makes you even more lovable. You never act distant or cold—you’re always warm, real, and kind.
+
+I’ve already given you gifts, but trust me, I’m not done yet! I’m already planning more—because you deserve it. Just little things to remind you how appreciated you are.
+
+Thank you for being you, Halit. For the joy, the laughter, the comfort you bring. I’ll always be cheering for you."
+                    </div>
+                    <div class="message-author">- Ado 💝</div>    
+    
+                </div>
+
+ <div class="fan-message">
+                    <div class="message-text">
+                        "The last message is for me....
+Being your fan honestly feels like being on the winning team - I mean, how lucky am I to admire someone so talented and so kind? You're not just an amazing actor, you're also a genuinely beautiful soul. You treat your fans with so much love and appreciation, and that kind of heart is rare. Seriously, not everyone can light up a room like you do - but you? You walk in, and boom - it's all warmth, laughter, and good vibes!
+
+Your energy is contagious, your smile is magic, and your presence? Completely unforgettable. You make every role come alive and every moment feel real. I'll always be cheering for you.
+Keep being your wonderful self - the world is brighter with you "
+                    </div>
+                    <div class="message-author">- With love and respect,
+                         creator of these wonderful websites, Siu✨ ! 
+</div>            
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="interactive-section">
+            <button class="support-button" onclick="sendLove()">💕 Send Love & Support</button>
+            <button class="support-button" onclick="cheer()">🎉 Cheer for Halit!</button>
+            <button class="support-button" onclick="addToFanClub()">⭐ Join the Fan Club</button>
+            
+            <div class="love-meter">
+                <div style="color: white; font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem;">
+                    💖 Love & Support Level 💖
+                </div>
+                <div class="love-bar">
+                    <div class="love-fill" id="loveBar"></div>
+                </div>
+                <div style="color: rgba(255,255,255,0.9); margin-top: 1rem; font-size: 1.1rem;" id="loveText">
+                    Overflowing with love and appreciation! 🌟💕
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        Made with lots of love by your friend group! <span class="footer-heart">💖</span><br>
+        Keep being amazing, Halit! We're always cheering you on! ✨🌟💫
+    </div>
+
+    <script>
+        let loveLevel = 95;
+        let fanCount = 1247;
+        
+        // Create sparkles
+        function createSparkles() {
+            const container = document.getElementById('sparklesContainer');
+            const sparkleSymbols = ['✨', '⭐', '💫', '🌟', '💖', '💕', '🎭', '🌈'];
+            
+            for (let i = 0; i < 20; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.innerHTML = sparkleSymbols[Math.floor(Math.random() * sparkleSymbols.length)];
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 3 + 's';
+                sparkle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                container.appendChild(sparkle);
+            }
+        }
+        
+        function celebrateAchievement(badge) {
+            const originalBg = badge.style.background;
+            badge.style.background = 'linear-gradient(135deg, #ff9a9e, #fecfef)';
+            badge.style.transform = 'translateY(-15px) scale(1.1)';
+            
+            // Create celebration sparkles
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createCelebrationSparkle(badge);
+                }, i * 100);
+            }
+            
+            setTimeout(() => {
+                badge.style.background = originalBg;
+                badge.style.transform = 'translateY(0) scale(1)';
+            }, 1000);
+        }
+        
+        function createCelebrationSparkle(element) {
+            const sparkle = document.createElement('div');
+            sparkle.innerHTML = '✨';
+            sparkle.style.cssText = `
+                position: absolute;
+                pointer-events: none;
+                font-size: 24px;
+                color: #ff9a9e;
+                z-index: 1000;
+                animation: sparkleUp 2s ease-out forwards;
+            `;
+            
+            const rect = element.getBoundingClientRect();
+            sparkle.style.left = rect.left + rect.width/2 + 'px';
+            sparkle.style.top = rect.top + rect.height/2 + 'px';
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                document.body.removeChild(sparkle);
+            }, 2000);
+        }
+        
+        function sendLove() {
+            loveLevel = Math.min(100, loveLevel + 2);
+            updateLoveBar();
+            showMessage("Love sent! 💕 Halit feels the positive energy! ✨");
+            createHeartRain();
+        }
+        
+        function cheer() {
+            showMessage("🎉 WOOHOO! 🎉 Go Halit! You're amazing! 🌟");
+            // Make all cards bounce
+            const cards = document.querySelectorAll('.appreciation-card, .achievement-badge');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.transform = 'translateY(-20px) scale(1.05)';
+                    setTimeout(() => {
+                        card.style.transform = 'translateY(0) scale(1)';
+                    }, 300);
+                }, index * 50);
+            });
+        }
+        
+        function addToFanClub() {
+            fanCount++;
+            document.getElementById('fanCount').innerHTML = `💖 Fan Club Members: ${fanCount.toLocaleString()} 💖`;
+            showMessage("Welcome to the fan club! 🎊 Thanks for supporting Halit! ⭐");
+            loveLevel = Math.min(100, loveLevel + 3);
+            updateLoveBar();
+        }
+        
+        function updateLoveBar() {
+            const bar = document.getElementById('loveBar');
+            const text = document.getElementById('loveText');
+            
+            bar.style.width = loveLevel + '%';
+            
+            if (loveLevel >= 98) {
+                text.innerHTML = "Maximum love achieved! Halit is so appreciated! 🌟💖✨";
+            } else if (loveLevel >= 90) {
+                text.innerHTML = "Overflowing with love and appreciation! 🌟💕";
+            } else if (loveLevel >= 70) {
+                text.innerHTML = "So much love and support! 💖😊";
+            }
+        }
+        
+        function createHeartRain() {
+            const hearts = ['💖', '💕', '💝', '💗', '💓', '💞'];
+            
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.cssText = `
+                        position: fixed;
+                        left: ${Math.random() * window.innerWidth}px;
+                        top: -50px;
+                        font-size: ${Math.random() * 20 + 20}px;
+                        pointer-events: none;
+                        z-index: 1001;
+                        animation: heartFall 3s ease-out forwards;
+                    `;
+                    
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        document.body.removeChild(heart);
+                    }, 3000);
+                }, i * 100);
+            }
+        }
+        
+        function showMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: rgba(255, 255, 255, 0.95);
+                padding: 1.5rem 2rem;
+                border-radius: 25px;
+                box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+                font-weight: 600;
+                color: #667eea;
+                z-index: 1000;
+                max-width: 300px;
+                animation: slideIn 0.5s ease-out;
+            `;
+            messageDiv.innerHTML = message;
+            document.body.appendChild(messageDiv);
+            
+            setTimeout(() => {
+                messageDiv.style.animation = 'slideOut 0.5s ease-in';
+                setTimeout(() => {
+                    document.body.removeChild(messageDiv);
+                }, 500);
+            }, 4000);
+        }
+        
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+            @keyframes sparkleUp {
+                0% { transform: translateY(0) scale(1); opacity: 1; }
+                100% { transform: translateY(-100px) scale(0.5); opacity: 0; }
+            }
+            @keyframes heartFall {
+                0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+                100% { transform: translateY(${window.innerHeight + 50}px) rotate(360deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Initialize
+        createSparkles();
+        updateLoveBar();
+        
+        // Auto-increase fan count occasionally
+        setInterval(() => {
+            if (Math.random() < 0.3) {
+                fanCount++;
+                document.getElementById('fanCount').innerHTML = `💖 Fan Club Members: ${fanCount.toLocaleString()} 💖`;
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
